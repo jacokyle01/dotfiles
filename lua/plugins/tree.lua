@@ -1,12 +1,19 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x", -- Use the latest version
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, for file icons
+      "MunifTanjim/nui.nvim",
+    },
     keys = function()
       return {
         {
           "<space>e",
           function()
-            require("neo-tree.command").execute({ dir = require("lazyvim.util").root.get() })
+            -- Replacing lazyvim.util with vim.fn.getcwd() for the root directory
+            require("neo-tree.command").execute({ dir = vim.fn.getcwd() })
           end,
           desc = "Explorer NeoTree (root dir)",
         },
@@ -35,20 +42,18 @@ return {
         ["z"] = "close_all_nodes",
         ["a"] = {
           "add",
-          -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
-          -- some commands may take optional config options, see `:h neo-tree-mappings` for details
           config = {
             show_path = "none", -- "none", "relative", "absolute"
           },
         },
-        ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+        ["A"] = "add_directory", 
         ["d"] = "delete",
         ["r"] = "rename",
         ["y"] = "copy_to_clipboard",
         ["x"] = "cut_to_clipboard",
         ["p"] = "paste_from_clipboard",
-        ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
-        ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+        ["c"] = "copy", 
+        ["m"] = "move",
         ["q"] = "close_window",
         ["R"] = "refresh",
         ["?"] = "show_help",
@@ -57,7 +62,7 @@ return {
         ["H"] = "toggle_hidden",
       }
       opts.filesystem.filtered_items = { always_show = { "application.conf" } }
-      opts.filesystem.group_empty_dirs = true -- when true, empty folders will be grouped together
+      opts.filesystem.group_empty_dirs = true 
       opts.sort_case_insensitive = true
     end,
   },
