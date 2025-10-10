@@ -1,7 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local telescope = require('telescope')
@@ -14,8 +14,13 @@ return {
           file_ignore_patterns = { "node_modules", ".git/" },
           mappings = {
             i = {
-              ["<C-j>"] = require('telescope.actions').move_selection_next,
-              ["<C-k>"] = require('telescope.actions').move_selection_previous,
+              ["<C-j>"] = require("telescope.actions").move_selection_next,
+              ["<C-k>"] = require("telescope.actions").move_selection_previous,
+              ["<esc>"] = require("telescope.actions").close,  -- close with one <esc>
+            },
+            n = {
+              ["<esc>"] = require("telescope.actions").close,  -- also close in normal mode
+              ["q"] = require("telescope.actions").close,      -- close with q in normal mode
             },
           },
           layout_config = {
