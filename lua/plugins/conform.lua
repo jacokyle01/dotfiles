@@ -2,6 +2,8 @@ return {
   "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
+      -- goimports fixes up the import block, gofumpt is a stricter gofmt
+      go = { "goimports", "gofumpt" },
       typescript = { "prettierd" },  -- runs prettierd for TS
       typescriptreact = { "prettierd" }, -- also for TSX
       javascript = { "prettierd" },
