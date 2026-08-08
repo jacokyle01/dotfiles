@@ -12,10 +12,14 @@ return {
         {
           "<space>e",
           function()
-            -- Replacing lazyvim.util with vim.fn.getcwd() for the root directory
-            require("neo-tree.command").execute({ dir = vim.fn.getcwd() })
+            if vim.bo.filetype == "neo-tree" then
+              vim.cmd.wincmd("p")
+            else
+              -- Replacing lazyvim.util with vim.fn.getcwd() for the root directory
+              require("neo-tree.command").execute({ dir = vim.fn.getcwd() })
+            end
           end,
-          desc = "Explorer NeoTree (root dir)",
+          desc = "Toggle focus: Explorer NeoTree (root dir) / editor",
         },
         {
           "<space>E",
@@ -31,6 +35,7 @@ opts = function(_, opts)
   opts.window = opts.window or {}           -- ensure table exists
   opts.window.mappings = {
     ["<cr>"] = "open",
+    ["t"] = "open",
     ["<esc>"] = "revert_preview",
     ["P"] = { "toggle_preview", config = { use_float = true } },
     ["l"] = "focus_preview",

@@ -7,6 +7,12 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 999
 vim.opt.termguicolors = true
 
+-- indentation: 3 spaces per tab
+vim.opt.tabstop = 3
+vim.opt.softtabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.expandtab = true
+
 
 -- lazy vim 
 
@@ -45,3 +51,11 @@ require("lazy").setup({
   checker = { enabled = true },
   "rebelot/kanagawa.nvim"
 })
+
+-- move lines up/down with alt + j/k
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move line up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move line down" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move selection up" })
