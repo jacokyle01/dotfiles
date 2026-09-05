@@ -1,1 +1,1 @@
-WIP
+Neovim config 
