@@ -1,0 +1,91 @@
+# action :: keys        (distilled from TIPS.md; leader = <Space>, localleader = \)
+
+## Go  (go / go.mod / go.work buffers only; each runs after writing the buffer, opens a bottom terminal split — i to interact, q or :bd! to close)
+go run . :: <leader>gr
+go build ./... :: <leader>gb
+go test ./... :: <leader>gt
+go test current file's package :: <leader>gp
+go vet ./... :: <leader>gv
+go mod tidy :: <leader>gm
+organize imports (gopls code action) :: <leader>gi
+alternate foo.go <-> foo_test.go :: <leader>ga
+
+## TypeScript / web  (ts/tsx/js/jsx buffers only)
+organize imports :: <leader>ti
+add missing imports :: <leader>tm
+remove unused :: <leader>tu
+fix all fixable ts problems :: <leader>tf
+apply eslint autofixes (:EslintFixAll) :: <leader>te
+
+## LSP  (any buffer with a server attached; pickers open in Telescope)
+goto definition :: gd
+goto declaration :: gD
+goto implementation :: gi
+goto type definition :: gy
+references :: gr
+hover docs :: K / gh
+signature help (normal and insert) :: <C-k>
+code action :: <leader>ca
+rename symbol :: <leader>cr
+run code lens :: <leader>cl
+document symbols :: <leader>cs
+workspace symbols :: <leader>cS
+toggle inlay hints :: <leader>ch
+
+## Diagnostics
+line diagnostics in a float :: <leader>cd
+send diagnostics to quickfix :: <leader>cq
+next / prev diagnostic :: ]d / [d
+next / prev error :: ]e / [e
+next / prev warning :: ]w / [w
+
+## Find (Telescope)
+find files :: <leader>ff
+live grep :: <leader>fg
+buffers :: <leader>fb
+help tags :: <leader>fh
+find files including gitignored (e.g. .env, dist/) :: <leader>fa
+move selection in a picker :: <C-j> / <C-k>
+close a picker :: <esc>
+
+## Files and buffers
+toggle focus: file tree / editor :: <leader>e
+file tree at cwd :: <leader>E
+previous buffer :: <S-h> / [b
+next buffer :: <S-l> / ]b
+delete buffer :: <leader>bd
+delete other buffers :: <leader>bo
+delete buffers left / right :: <leader>bh / <leader>bl
+move buffer left / right :: <leader>bH / <leader>bL
+pin buffer :: <leader>bp
+
+## File explorer (neo-tree)  (use_default_mappings = false — these plus plain Vim motions are all that exist)
+open file / expand directory :: <cr> / t
+collapse node under cursor :: C
+collapse everything :: z
+toggle floating preview of the file :: P
+jump into that preview window :: l
+dismiss the preview :: <esc>
+add a file (end name with / to make a dir) :: a
+add a directory :: A
+rename :: r
+delete :: d
+copy / move (prompts for destination) :: c / m
+copy / cut to tree clipboard :: y / x
+paste what was yanked or cut :: p
+toggle gitignored files (dotfiles always show) :: H
+refresh the tree :: R
+close the tree :: q
+show all mappings :: ?
+previous / next source (files, buffers, git) :: < / >
+
+## Editing
+move line or selection down / up (normal, insert, visual) :: <A-j> / <A-k>
+
+## Plugin and tool management
+plugin manager :: :Lazy
+LSP / formatter installer :: :Mason
+install or update pinned tools :: :MasonToolsUpdate
+which servers are attached here :: :LspInfo
+which formatters ran, and why :: :ConformInfo
+update treesitter parsers :: :TSUpdate
